@@ -43,15 +43,24 @@ const apiService = {
             throw new ApiError(error.message || "Something went wrong", error.response?.status || 500);
         }
     },
+
+    // users
     getUsers: async (): Promise<User[]> => {
         return await apiService.get<User[]>("/users");
     },
     getUserById: async (id: number): Promise<User> => {
         return await apiService.get<User>(`/users/${id}`);
     },
+
+
+
+    // videos
     getVideos: async (): Promise<Video[]> => {
         return await apiService.get<Video[]>("/videos");
     },
+
+
+    // posts
     getPosts: async (): Promise<Post[]> => {
         return await apiService.get<Post[]>("/posts");
     },

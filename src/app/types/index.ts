@@ -27,35 +27,54 @@ export interface Like {
     createdAt: string;
 }
 
+
+
 export interface Subscription {
-    id: number;
-    subscriberId: number;
-    subscribedToId: number;
-    createdAt: string;
+    id: string;               // MongoDB ObjectId as a string
+    subscriber: string;       // Corresponds to the backend subscriber field
+    channel: string;          // Corresponds to the backend channel field
+    createdAt: string;        // Timestamp from the backend
+    updatedAt?: string;       // Optional updated timestamp
 }
 
+
+
 export interface Video {
-    id: number;
+    id: string;            // Typically the MongoDB ObjectId as a string
+    videoFile: string;     // Cloudinary URL for the video file
+    thumbnail: string;     // Cloudinary URL for the thumbnail
     title: string;
     description: string;
-    url: string;
-    authorId: number;
-    createdAt: string;
+    duration: number;
+    views: number;
+    isPublished: boolean;
+    owner: string;         // ID of the owner (or you could use authorId if that fits your naming convention)
+    createdAt: string;     // Timestamp from Mongoose
+    updatedAt?: string;    // Optional updated timestamp if needed
 }
 
 export interface ApiResponse<T> {
     data: T;
     message: string;
-    status: number;
+    statusCode: number;
+    success: boolean;
 }
 
 
 export class ApiError extends Error {
-    status: number;
-    constructor(message: string, status: number) {
+    statusCode: number;
+    errors: any[];
+    data: any;
+    success: boolean;
+    constructor(message: string, statusCode: number, errors: any[] = [], data: any = null) {
         super(message);
-        this.status = status;
+        this.statusCode = statusCode;
+        this.message = message;
+        this.errors = errors;
+        this.data = data;
+        this.success = false; // indicates failure
         this.name = "ApiError";
+        Error.captureStackTrace(this, this.constructor);
     }
 }
 

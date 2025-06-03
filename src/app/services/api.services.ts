@@ -1,5 +1,5 @@
 import api from "../lib/axios";
-import { ApiResponse, ApiError, User, Video, Post, Comment, Like, Subscription, PaginatedResponse } from "../types";
+import { ApiResponse, ApiError, Post, Comment, Like, Subscription, PaginatedResponse } from "../types";
 
 
 const apiService = {
@@ -44,32 +44,8 @@ const apiService = {
         }
     },
 
-    // users
-    getUsers: async (): Promise<User[]> => {
-        return await apiService.get<User[]>("/users");
-    },
-    getUserById: async (id: number): Promise<User> => {
-        return await apiService.get<User>(`/users/${id}`);
-    },
 
 
-
-    // videos
-    getVideos: async (): Promise<Video[]> => {
-        return await apiService.get<Video[]>("/videos");
-    },
-
-
-    // posts
-    getPosts: async (): Promise<Post[]> => {
-        return await apiService.get<Post[]>("/posts");
-    },
-    getPostsByUser: async (userId: number): Promise<Post[]> => {
-        return await apiService.get<Post[]>(`/posts/user/${userId}`);
-    },
-    getPostById: async (id: number): Promise<Post> => {
-        return await apiService.get<Post>(`/posts/${id}`);
-    },
     getComments: async (): Promise<Comment[]> => {
         return await apiService.get<Comment[]>("/comments");
     },

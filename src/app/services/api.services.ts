@@ -1,5 +1,5 @@
 import api from "../lib/axios";
-import { ApiResponse, ApiError, Post, Comment, Like, Subscription, PaginatedResponse } from "../types";
+import { ApiResponse, ApiError, } from "../types";
 
 
 const apiService = {
@@ -43,30 +43,6 @@ const apiService = {
             throw new ApiError(error.message || "Something went wrong", error.response?.status || 500);
         }
     },
-
-
-
-    getComments: async (): Promise<Comment[]> => {
-        return await apiService.get<Comment[]>("/comments");
-    },
-    getCommentById: async (id: number): Promise<Comment> => {
-        return await apiService.get<Comment>(`/comments/${id}`);
-    },
-    getLikes: async (): Promise<Like[]> => {
-        return await apiService.get<Like[]>("/likes");
-    },
-    getLikeById: async (id: number): Promise<Like> => {
-        return await apiService.get<Like>(`/likes/${id}`);
-    },
-    getSubscriptions: async (): Promise<Subscription[]> => {
-        return await apiService.get<Subscription[]>("/subscriptions");
-    },
-    getSubscriptionById: async (id: number): Promise<Subscription> => {
-        return await apiService.get<Subscription>(`/subscriptions/${id}`);
-    },
-    getPaginatedPosts: async (page: number, pageSize: number): Promise<PaginatedResponse<Post>> => {
-        return await apiService.get<PaginatedResponse<Post>>(`/posts?page=${page}&pageSize=${pageSize}`);
-    }
 };
 
 export default apiService;

@@ -8,7 +8,6 @@ const apiService = {
             const response = await api.get<ApiResponse<T>>(endpoint);
             return response.data.data;
         } catch (error: any) {
-            // Handle error
             console.error("API Error:", error);
             throw new ApiError(error.message || "Something went wrong", error.response?.status || 500);
         }
@@ -18,7 +17,6 @@ const apiService = {
             const response = await api.post<ApiResponse<T>>(endpoint, data);
             return response.data.data;
         } catch (error: any) {
-            // Handle error
             console.error("API Error:", error);
             throw new ApiError(error.message || "Something went wrong", error.response?.status || 500);
         }
@@ -28,7 +26,6 @@ const apiService = {
             const response = await api.put<ApiResponse<T>>(endpoint, data);
             return response.data.data;
         } catch (error: any) {
-            // Handle error
             console.error("API Error:", error);
             throw new ApiError(error.message || "Something went wrong", error.response?.status || 500);
         }
@@ -38,7 +35,6 @@ const apiService = {
             const response = await api.delete<ApiResponse<T>>(endpoint);
             return response.data.data;
         } catch (error: any) {
-            // Handle error
             console.error("API Error:", error);
             throw new ApiError(error.message || "Something went wrong", error.response?.status || 500);
         }

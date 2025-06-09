@@ -94,7 +94,7 @@ const CommonUserRegister: React.FC = () => {
                         />
                     </div>
                     <div>
-                        <label>Avatar: (required)</label>
+                        <label>Avatar:</label>
                         <input
                             type="file"
                             accept="image/*"

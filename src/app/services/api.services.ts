@@ -39,6 +39,15 @@ const apiService = {
             throw new ApiError(error.message || "Something went wrong", error.response?.status || 500);
         }
     },
+    patch: async <T>(endpoint: string, data: any): Promise<T> => {
+        try {
+            const response = await api.patch<ApiResponse<T>>(endpoint, data);
+            return response.data.data;
+        } catch (error: any) {
+            console.error("API Error:", error);
+            throw new ApiError(error.message || "Something went wrong", error.response?.status || 500);
+        }
+    }
 };
 
 export default apiService;

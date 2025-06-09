@@ -9,10 +9,13 @@ export const registerUser = async (formData: FormData): Promise<User> => {
 };
 
 // Logs in a user with given credentials.
-export const loginUser = async (credentials: { email: string; password: string }): Promise<{ accessToken: string; user: User }> => {
+export const loginUser = async (
+    credentials: { email?: string; username?: string; password: string }
+): Promise<{ accessToken: string; user: User }> => {
     const loginEndPoint = process.env.NEXT_PRIVATE_API_URL_LOGIN || "/users/login";
     return await apiService.post<{ accessToken: string; user: User }>(loginEndPoint, credentials);
 };
+
 
 // Logs out the current user.
 export const logoutUser = async (): Promise<ApiResponse<null>> => {

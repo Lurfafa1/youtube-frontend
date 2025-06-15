@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, FormEvent } from "react";
 import { registerUser } from "../../services/users.services";
 import { User } from "../../types";

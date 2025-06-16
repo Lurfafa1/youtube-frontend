@@ -1,12 +1,14 @@
 "use client"
 
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { registerUser } from "../../services/users.services";
 import { User } from "../../types";
 import { useApi } from "../../hooks/useApi";
 
 const CommonUserRegister: React.FC = () => {
     const { data: registeredUser, error, isLoading, fetchData: register } = useApi<FormData, User>(registerUser);
+    const router = useRouter();
 
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -16,6 +18,14 @@ const CommonUserRegister: React.FC = () => {
     const [coverImage, setCoverImage] = useState<File | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [localError, setLocalError] = useState<string | null>(null);
+
+
+
+    useEffect(() => {
+        if (registeredUser) {
+            router.push("/ui/profile");
+        }
+    }, [registeredUser, router]);
 
 
     const handleSubmit = async (e: FormEvent) => {

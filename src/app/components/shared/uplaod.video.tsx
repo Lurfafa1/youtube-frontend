@@ -4,7 +4,7 @@ import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { getVideos, uploadVideo, deleteVideo } from "../../services/video.services";
 import { Video } from "../../types/index";
 
-const VideoComponent: React.FC = () => {
+const UploadVideo: React.FC = () => {
     const [videos, setVideos] = useState<Video[]>([]);
     const [videoFile, setVideoFile] = useState<File | null>(null);
     const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
@@ -125,4 +125,4 @@ const VideoComponent: React.FC = () => {
     );
 };
 
-export default VideoComponent;
+export default UploadVideo;

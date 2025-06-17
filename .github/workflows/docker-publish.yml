@@ -1,4 +1,3 @@
-
 name: Build and Push Docker image to Docker Hub
 
 on:
@@ -28,7 +27,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: Lurfafa1/youtube-frontend:latest
+          tags: fafacode/youtube-frontend:latest
 
       - name: Logout from Docker Hub
         run: docker logout
